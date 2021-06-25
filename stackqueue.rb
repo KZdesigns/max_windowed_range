@@ -2,25 +2,32 @@ require_relative 'my_stack'
 
 class StackQueue
     def initialize(*values)
-        @top = MyStack.new(values)
-        @bottom = MyStack.new(values)
+       @top = MyStack.new
+       @bottom = MyStack.new 
     end
 
     def size
-        
+        @top.size + @bottom.size
     end
 
     def empty?
-        
+        @top.empty? && @bottom.empty?
     end
 
     def enqueue(el)
-      
+        @top.push(el)
     end
 
     def dequeue
-      
+        queueify if @bottom.empty?
+        @bottom.pop
     end
+
+    private
+    def queueify
+        @bottom.push(@top.pop) until @top.empty?
+    end
+
 end
 
 

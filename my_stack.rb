@@ -1,10 +1,10 @@
 class MyStack
-    def initialize(*values)
-      @store = values
+    def initialize(store = [])
+      @store = store
     end
 
     def peek
-        @store.first
+        @store.last
     end
 
     def size
@@ -16,13 +16,11 @@ class MyStack
     end
 
     def pop
-        el = @store.pop
-        el
+        @store.pop
     end
 
     def push(el)
         @store.push(el)
-        @store
     end
   end
 

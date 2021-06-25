@@ -1,14 +1,14 @@
 class MyQueue
-    def initialize(*values)
-      @store = values
+    def initialize(store = [])
+      @store = store
     end
 
     def peek
-        @store.first
+        @store.last
     end
 
     def size
-        @store.length
+        @store.size
     end
 
     def empty?
@@ -17,7 +17,6 @@ class MyQueue
 
     def enqueue(el)
         @store.push(el)
-        el
     end
 
     def dequeue
