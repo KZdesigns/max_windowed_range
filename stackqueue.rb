@@ -1,7 +1,7 @@
 require_relative 'my_stack'
 
 class StackQueue
-    def initialize(*values)
+    def initialize
        @top = MyStack.new
        @bottom = MyStack.new 
     end
