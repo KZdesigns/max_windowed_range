@@ -27,7 +27,6 @@ class StackQueue
     def queueify
         @bottom.push(@top.pop) until @top.empty?
     end
-
 end
 
 
