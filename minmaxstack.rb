@@ -5,52 +5,61 @@ class MinMaxStack
         @store = MyStack.new
     end
 
-    def empty?
-        @store.empty?
+    def peek
+        @store.peek[:value] unless empty?
     end
 
     def size
         @store.size
     end
 
-
-    def peek
-        @store.peek[:value] unless empty?
+    def empty?
+        @store.empty?
     end
 
     def max
         @store.peek[:max] unless empty?
     end
 
-    def min 
+    def min
         @store.peek[:min] unless empty?
     end
 
-    def pop
-        @store.pop[:value] unless empty?
+    def  pop
+        @store.pop
     end
 
     def push(val)
         @store.push({
-            :max new_max(val),
-            :min new_min(val)
-            :value val
+            max: max_value(val),
+            min: min_value(val),
+            value: val
         })
     end
 
-    def new_max(val)
-        #set the max for the given position
+    private 
+
+    def max_value(val)
         empty? ? val : [max, val].max
     end
 
-    def new_min(val)
-        #set the min for the given position
+    def min_value(val)
         empty? ? val : [min, val].min
     end
 end
 
-# array = [{max: 1, min: 1, value: 1},{max: 2, min: 1, value: 2}, {max: 3, min: 1, value: 3}, {max: 3, min: 0, value: 0}]
 
-
-# need to create a hash map for each value storing the value, the current max, and the current min
-# when pushing a new value into the stack record the current max, and min as well as the value
+#each value in the stack needs to be a hash containing 3 items ex. [{max: 1, min: 1, value: 1}]
+# stack = MinMaxStack.new
+# p stack.empty? #=> true
+# p stack.push(5) #stack = [{max: 5, min: 5, value: 5}]
+# p stack.push(3) #stack = [{max: 5, min: 5, value: 5},{max: 5, min: 3, value: 3}]
+# p stack.size #=> 2
+# p stack.pop #=> {max: 5, min: 3, value: 3}
+# p stack.size #=> 1
+# p stack.push(10) #stack = [{max: 5, min: 5, value: 5},{max: 10, min: 5, value: 10}]
+# p stack.min #=> 5
+# p stack.max #=> 10
+# p stack.pop
+# p stack.pop
+# p stack.empty? #=> true
