@@ -44,11 +44,6 @@ class MinMaxStackQueue
 end
 
 
-queue = MinMaxStackQueue.new
 
-queue.enqueue(5)
-queue.enqueue(7)
-queue.enqueue(1)
-queue.dequeue
 
 
