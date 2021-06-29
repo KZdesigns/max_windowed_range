@@ -26,7 +26,7 @@ class MinMaxStack
     end
 
     def  pop
-        @store.pop
+        @store.pop[:value] unless empty?
     end
 
     def push(val)
